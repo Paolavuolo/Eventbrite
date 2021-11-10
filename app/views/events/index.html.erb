@@ -1,2 +1,61 @@
-<h1>Events#index</h1>
-<p>Find me in app/views/events/index.html.erb</p>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceuil</title>
+</head>
+<body>
+<!--Message d'erreur-->
+
+    <main role="main">
+
+        <!-- Main jumbotron for a primary marketing message or call to action -->
+        <div class="jumbotron">
+          <div class="container">
+            <h1 class="display-3">Ohéééé Moussaillon!</h1>
+            <p>Je te souhaite la bienvenu sur mon site !! ici tu pourras retrouver les différents évènements, tu peux également en créer un !! </p>
+            <p><a class="btn btn-primary btn-lg" href="#" role="button"> Créer Ton Event &raquo;</a></p>
+          </div>
+        </div>
+  
+        <div class="container">
+          <!-- Example row of columns -->
+          <% @events.each do |event| %>
+          <div class="row", style="flex-direction: row;">
+            <div class="col-md-4">
+              <h2><%= event.titlte%></h2>
+              <p><strong>Date:</strong><%=event.start_date%><br>
+                <strong>durée de l'évènement :</strong> <%=event.duration%> minutes<br>
+                <strong>Au programme :</strong> <%=event.description%><br>
+                <strong><em>Prix :</em></strong> <%=event.price%>$<br>
+                <strong>lieu :</strong> <%=event.location%></p>
+              <p><a class="btn btn-secondary" href="<%=event_path(@events.ids)%>" role="button">View details &raquo;</a></p>
+            </div>
+          </div>
+          <%end%>
+  
+          <hr>
+  
+        </div> <!-- /container -->
+  
+      </main>
+  
+      <footer class="container">
+        <p>&copy; Company 2017-2018</p>
+      </footer>
+  
+      <!-- Bootstrap core JavaScript
+      ================================================== -->
+      <!-- Placed at the end of the document so the pages load faster -->
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+      <script src="../../assets/js/vendor/popper.min.js"></script>
+      <script src="../../dist/js/bootstrap.min.js"></script>
+    </body>
+  </html>
+  
+</body>
+</html>

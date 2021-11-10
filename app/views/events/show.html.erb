@@ -1,0 +1,16 @@
+<div class='container mt-4'>
+    <br>
+    <h1><%= @event.titlte %></h1>
+    <!-- INFORMATION SUR L'UTILISATEUR -->
+    <br>
+    <div class= 'border border-white mt-4 pt-4 pl-2' style="max-width: 50rem; font-size: 18px;">
+      <p>
+        <u>Date de début</u>: <%= @event.start_date.strftime('%d of %B, %Y - %HH%M') %><br>
+        <u>Date de fin</u>: <%= @end_date %><br>
+        <u>Lieu de l'Event</u>: <%= @event.location %><br>
+        <u>Description</u>: <%= @event.description %><br>
+        <u>Prix</u>: <%= @event.price%> €<br>
+        <!-- Methode count en private pour le nombre d'inscrits -->
+      </p>
+    </div>
+  
