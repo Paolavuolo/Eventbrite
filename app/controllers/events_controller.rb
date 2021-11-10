@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create]
   def index
     @events = Event.all
   end
@@ -10,7 +11,7 @@ class EventsController < ApplicationController
   end
   def create
     @event = Event.new(params_event)
-    @event.admin_id = current_user.id
+    @event.createur_id = current_user.id
     if @event.save
       redirect_to event_path(@event.id)
       flash[:success]="Evènement créé avec succès"

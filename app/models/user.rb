@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  has_many :createurs, foreign_key:'createur_id', class_name: 'Event'
          
   def welcome_send
     UserMailer.welcome_email(self).deliver_now
