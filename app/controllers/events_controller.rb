@@ -5,13 +5,14 @@ class EventsController < ApplicationController
   end
   def show
     @event = Event.find(params[:id])
+    @count = count 
+    @attendances = participated?
   end 
   def def new
     @event = Event.new
   end
   def create
-    @event = Event.new(params_event)
-    @event.createur_id = current_user.id
+    @event = Event.new(titlte:params[:titlte], description:params[:description], duration:params[:duration], location:params[:location], start_date:params[:start_date], price:params[:price], createur: current_user)
     if @event.save
       redirect_to event_path(@event.id)
       flash[:success]="Evènement créé avec succès"
@@ -21,8 +22,13 @@ class EventsController < ApplicationController
   end
 
   private 
-  def params_event
-    params.require(:event).permit(:start_date, :duration, :titlte, :price, :description, :location)
+
+  def count 
+    Event.find(params[:id]).attendances.all.count
+  end 
+
+  def participated?
+    Event.find(params[:id]).attendances.ids
   end 
   
 end

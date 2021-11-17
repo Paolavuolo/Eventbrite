@@ -61,3 +61,5 @@ gem "letter_opener", group: :development
 gem 'dotenv', '~> 2.7', '>= 2.7.6'
 gem 'dotenv-rails', '~> 2.7', '>= 2.7.6'
 gem 'rails_12factor', group: :production
+gem 'stripe'
+gem 'table_print' 

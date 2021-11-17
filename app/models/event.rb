@@ -7,4 +7,5 @@ class Event < ApplicationRecord
     validates :location, presence: true 
 
     belongs_to :createur, class_name: 'User' #un seul administrateur par évènement
+    has_many :attendances #plusieurs participants par évènement
 end

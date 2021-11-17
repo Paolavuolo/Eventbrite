@@ -10,7 +10,19 @@
         <u>Lieu de l'Event</u>: <%= @event.location %><br>
         <u>Description</u>: <%= @event.description %><br>
         <u>Prix</u>: <%= @event.price%> €<br>
-        <!-- Methode count en private pour le nombre d'inscrits -->
+        <u>Nombre de participants a l'évènement : <%= @count %> </u>
       </p>
     </div>
+    <div>
+<% if user_signed_in? %> <!--Si l'utilisateur est connecté -->
+       <a href="<%=new_event_attendance_path(params[:id])%>">Participer à l'évenement</a>
+    <% if current_user.id != @event.createur_id %>
+    <% elsif @attendances.include? current_user.id %> <!--Si l'utilisateur n'est pas créateur de l'évènement et Si l'utilisateur ne participe pas déjà a l'évènement -->
+    <% else %>
+    <a href="<%=new_event_attendance_path(params[:id])%>">Participer à l'évenement</a>
+    <%end%>
+  <%end%>
+
+ 
+ 
   

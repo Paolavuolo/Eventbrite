@@ -8,6 +8,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :createurs, foreign_key:'createur_id', class_name: 'Event'
+  has_many :attendances
+  has_many :events, through: :attendances
          
   def welcome_send
     UserMailer.welcome_email(self).deliver_now
